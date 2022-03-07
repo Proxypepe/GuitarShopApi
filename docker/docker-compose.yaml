@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  app:
+    image: 'guitar_shop_api:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - JDBC_DATABASE_URL=jdbc:postgresql://db:5432/guitar_shop_api
+      - JDBC_DATABASE_USERNAME=root
+      - JDBC_DATABASE_PASSWORD=some_root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: postgres
+    restart: always
+    container_name: db
+    ports:
+      - 32700:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: some_root
+      POSTGRES_DB: guitar_shop_api
