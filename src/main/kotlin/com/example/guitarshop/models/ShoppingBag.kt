@@ -1,11 +1,11 @@
 package com.example.guitarshop.models
 
-import com.example.guitarshop.dto.ProductDTO
+import com.example.guitarshop.entity.ProductEntity
 import io.swagger.v3.oas.annotations.Parameter
 
 data class ShoppingBag (
     @Parameter(required = true)
-    val products: List<ProductDTO>,
+    val products: List<ProductEntity>,
     @Parameter(required = true)
     val amount: Int,
     @Parameter(required = true)

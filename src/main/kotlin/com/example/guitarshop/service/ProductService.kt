@@ -1,13 +1,13 @@
 package com.example.guitarshop.service
 
 import com.example.guitarshop.datasources.repository.ProductRepository
-import com.example.guitarshop.dto.ProductDTO
+import com.example.guitarshop.entity.ProductEntity
 import org.springframework.stereotype.Service
 
 @Service
 class ProductService(private val productRepository: ProductRepository) {
-    fun save(productDTO: ProductDTO): ProductDTO = productRepository.save(productDTO)
-    fun getProducts(): List<ProductDTO> = productRepository.findAll()
+    fun save(productEntity: ProductEntity): ProductEntity = productRepository.save(productEntity)
+    fun getProducts(): List<ProductEntity> = productRepository.findAll()
 
-    fun getProductByVendorCode(vendorCode: Int): ProductDTO = productRepository.getById(vendorCode)
+    fun getProductById(vendorCode: Int): ProductEntity = productRepository.getById(vendorCode)
 }

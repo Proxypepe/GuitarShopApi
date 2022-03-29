@@ -1,20 +1,8 @@
-version: '3'
-services:
+version: '2.4'
+volumes:
+  guitar_shop:
 
-  app:
-    image: 'guitar_shop_api:latest'
-    build:
-      context: .
-    container_name: app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      - JDBC_DATABASE_URL=jdbc:postgresql://db:5432/guitar_shop_api
-      - JDBC_DATABASE_USERNAME=root
-      - JDBC_DATABASE_PASSWORD=some_root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+services:
 
   db:
     image: postgres
@@ -23,8 +11,29 @@ services:
     ports:
       - 32700:5432
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - guitar_shop:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: some_root
-      POSTGRES_DB: guitar_shop_api
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=some_root
+      - POSTGRES_DB=guitar_shop_api
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: 'guitar_shop:latest'
+    build:
+      context: .
+    container_name: guitar_app
+    ports:
+      - "8000:8000"
+    environment:
+      JDBC_DATABASE_URL: jdbc:postgresql://db:5432/guitar_shop_api
+      JDBC_DATABASE_USERNAME: root
+      JDBC_DATABASE_PASSWORD: some_root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      db:
+        condition: service_healthy
