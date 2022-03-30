@@ -9,7 +9,13 @@ data class RatingEntity(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int = 0,
     val rating: Float,
-    val product_id: Int,
-    val user_id: Int
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    val product: ProductEntity,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    val user: UserEntity,
 
     )

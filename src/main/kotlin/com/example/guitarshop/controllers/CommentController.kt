@@ -17,8 +17,8 @@ class CommentController(private val service: CommentService) {
     fun createComment(@RequestBody body: CommentRequest) {
         service.save(CommentEntity(
             comment = body.comment,
-            product_id = body.product_id,
-            user_id = body.user_id
+            product = body.product,
+            user = body.user
         ))
     }
 

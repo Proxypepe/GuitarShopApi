@@ -15,8 +15,8 @@ class RatingController(private val service: RatingService) {
     fun createRating(@RequestBody body: RatingEntity): RatingEntity {
         return service.save(
             RatingEntity(
-                product_id = body.product_id,
-                user_id = body.user_id,
+                product = body.product,
+                user = body.user,
                 rating = body.rating
             )
         )

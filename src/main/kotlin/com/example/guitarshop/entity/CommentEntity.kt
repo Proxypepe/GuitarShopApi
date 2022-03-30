@@ -11,6 +11,11 @@ data class CommentEntity(
     @Column(length = 1024)
     val comment: String,
 
-    val product_id: Int,
-    val user_id: Int,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    val product: ProductEntity,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    val user: UserEntity,
 )

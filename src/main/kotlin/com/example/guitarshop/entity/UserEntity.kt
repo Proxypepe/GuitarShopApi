@@ -11,20 +11,17 @@ data class UserEntity(
     val email: String,
     val password: String?,
     val role: String,
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     val bags: List<ShoppingBagEntity> = emptyList(),
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
+    @OneToMany(mappedBy = "user")
     val comments: List<CommentEntity> = emptyList(),
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
+    @OneToMany(mappedBy = "user")
     val rating: List<RatingEntity> = emptyList(),
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "prod_id")
-    @Column(nullable = true)
-    val favorites: List<ProductEntity> = emptyList(),
+    @OneToMany(mappedBy = "user")
+    val favorites: List<FavoriteEntity> = emptyList(),
     )

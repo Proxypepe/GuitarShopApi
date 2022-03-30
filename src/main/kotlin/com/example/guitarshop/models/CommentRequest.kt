@@ -1,8 +1,11 @@
 package com.example.guitarshop.models
 
+import com.example.guitarshop.entity.ProductEntity
+import com.example.guitarshop.entity.UserEntity
+
 data class CommentRequest(
     val comment: String,
-    val product_id: Int,
-    val user_id: Int
+    val product: ProductEntity,
+    val user: UserEntity
 )
 

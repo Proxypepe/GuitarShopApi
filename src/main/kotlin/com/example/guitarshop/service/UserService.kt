@@ -13,4 +13,8 @@ class UserService(private val userRepository: UserRepository) {
 
     fun getUserByEmail(email: String): UserEntity = userRepository.getUserDTOByEmail(email)
 
+    fun deleteFavorite(id: Int) {
+
+    }
+
 }
