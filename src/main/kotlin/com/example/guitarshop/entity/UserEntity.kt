@@ -23,4 +23,8 @@ data class UserEntity(
     @JoinColumn(name = "product_id")
     val rating: List<RatingEntity> = emptyList(),
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "prod_id")
+    @Column(nullable = true)
+    val favorites: List<ProductEntity> = emptyList(),
     )

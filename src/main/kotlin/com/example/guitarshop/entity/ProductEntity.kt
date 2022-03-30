@@ -40,14 +40,16 @@ data class ProductEntity(
     val lads: String?,
     val link: String?,
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_it")
     val bags: List<ShoppingBagEntity> = emptyList(),
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     val comments: List<CommentEntity> = emptyList(),
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     val rating: List<RatingEntity> = emptyList(),
 
+    @OneToMany(fetch = FetchType.EAGER)
+    val favoriteBy: List<UserEntity> = emptyList(),
     )
