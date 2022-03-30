@@ -9,5 +9,7 @@ class ProductService(private val productRepository: ProductRepository) {
     fun save(productEntity: ProductEntity): ProductEntity = productRepository.save(productEntity)
     fun getProducts(): List<ProductEntity> = productRepository.findAll()
 
-    fun getProductById(vendorCode: Int): ProductEntity = productRepository.getById(vendorCode)
+    fun getProductById(id: Int): ProductEntity = productRepository.getById(id)
+
+    fun getProductWithOffset(offset: Int, limit: Int) = productRepository.getProductWithOffset(offset, limit)
 }

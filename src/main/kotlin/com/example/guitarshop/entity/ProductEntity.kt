@@ -10,7 +10,7 @@ data class ProductEntity(
     val prod_id: Int = 0,
     @Column(length = 1023)
     val name: String,
-    @Column(length = 1500)
+    @Column(length = 2047)
     val description: String,
     @Column(length = 63)
     val price: String,

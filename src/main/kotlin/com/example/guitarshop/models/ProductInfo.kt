@@ -29,7 +29,7 @@ data class ProductInfo(
     val form: String?,
     val specials: String?,
     val lads: String?,
-    val link: String?,
+    val link: ByteArray?,
     val comments: List<CommentEntity>,
     val rating: List<RatingEntity>
 )
