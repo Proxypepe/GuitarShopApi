@@ -8,5 +8,6 @@ import org.springframework.stereotype.Service
 class RatingService(private val ratingRepository: RatingRepository) {
     fun save(ratingEntity: RatingEntity) = ratingRepository.save(ratingEntity)
 
+    fun getRatingByProdId(prod_id: Int) = ratingRepository.findRatingEntityByProductId(prod_id)
 
 }

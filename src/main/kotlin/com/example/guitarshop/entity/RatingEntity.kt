@@ -2,7 +2,7 @@ package com.example.guitarshop.entity
 
 import javax.persistence.*
 
-@Table(name = "raitings")
+@Table(name = "ratings")
 @Entity
 data class RatingEntity(
     @Id

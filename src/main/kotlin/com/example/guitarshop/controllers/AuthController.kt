@@ -16,6 +16,7 @@ class AuthController(private val service: UserService) {
                 email = user.email,
                 role = user.role,
                 bags = user.bags,
+                favs = user.favorites,
             )
         return null
     }

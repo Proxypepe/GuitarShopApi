@@ -1,0 +1,7 @@
+#!/bin/bash
+
+./mvnw clean package -DskipTests
+
+cp target/*.jar docker/
+
+

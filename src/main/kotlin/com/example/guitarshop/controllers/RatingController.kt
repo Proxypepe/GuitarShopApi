@@ -2,14 +2,14 @@ package com.example.guitarshop.controllers
 
 import com.example.guitarshop.entity.RatingEntity
 import com.example.guitarshop.service.RatingService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/rating/")
 class RatingController(private val service: RatingService) {
+
+    @GetMapping("/detail/{id}")
+    fun getDetailedRating(@PathVariable id: Int) = service.getRatingByProdId(id)
 
     @PostMapping("/add")
     fun createRating(@RequestBody body: RatingEntity): RatingEntity {

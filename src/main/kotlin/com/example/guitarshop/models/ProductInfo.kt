@@ -31,8 +31,8 @@ data class ProductInfo(
     val specials: String?,
     val lads: String?,
     val link: String?,
-    val comments: List<CommentEntity>,
-    val rating: List<RatingEntity>
+    val comments: List<CommentEntity> = emptyList(),
+    val rating: List<RatingEntity> = emptyList()
 )
 
 fun toProductInfo(productEntity: ProductEntity): ProductInfo {

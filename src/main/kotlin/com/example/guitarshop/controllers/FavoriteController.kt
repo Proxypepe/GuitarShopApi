@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/favorite")
 class FavoriteController(private val service: FavoriteService) {
 
+    @GetMapping("/all")
+    fun getFavorites(): List<FavoriteEntity> = service.getAll()
+
     @PostMapping("/add")
     fun addFavorite(@RequestBody body: FavoriteEntity): FavoriteEntity = service.save(body)
 
