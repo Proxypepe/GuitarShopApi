@@ -2,12 +2,11 @@ package com.example.guitarshop.models
 
 import com.example.guitarshop.entity.CommentEntity
 import com.example.guitarshop.entity.ProductEntity
-import com.example.guitarshop.entity.RatingEntity
 
 data class ProductInfo(
     val prod_id: Int = 0,
     val name: String,
-    val description: String,
+    val description: String?,
     val price: String,
     val stock: Int,
     val category: String,
@@ -32,7 +31,6 @@ data class ProductInfo(
     val lads: String?,
     val link: String?,
     val comments: List<CommentEntity> = emptyList(),
-    val rating: List<RatingEntity> = emptyList()
 )
 
 fun toProductInfo(productEntity: ProductEntity): ProductInfo {
@@ -64,7 +62,6 @@ fun toProductInfo(productEntity: ProductEntity): ProductInfo {
         lads = productEntity.lads,
         link = productEntity.link,
         comments = productEntity.comments,
-        rating = productEntity.rating
     )
 }
 

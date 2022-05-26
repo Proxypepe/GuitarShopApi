@@ -1,5 +1,6 @@
 package com.example.guitarshop.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Table(name = "favorite")
@@ -11,10 +12,12 @@ data class FavoriteEntity(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     val user: UserEntity,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     val product: ProductEntity
 
 )

@@ -29,5 +29,4 @@ class BagController(private val service: ShoppingBagService) {
             )
         )
     }
-
 }

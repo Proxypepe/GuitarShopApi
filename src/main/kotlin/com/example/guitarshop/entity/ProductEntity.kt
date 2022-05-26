@@ -1,5 +1,7 @@
 package com.example.guitarshop.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Table(name = "products")
@@ -11,7 +13,7 @@ data class ProductEntity(
     @Column(length = 1023)
     val name: String,
     @Column(length = 2047)
-    val description: String,
+    val description: String?,
     @Column(length = 63)
     val price: String,
     val stock: Int,
@@ -41,14 +43,14 @@ data class ProductEntity(
     val link: String?,
 
     @OneToMany(fetch = FetchType.EAGER)
+    @JsonManagedReference
     val bags: List<ShoppingBagEntity> = emptyList(),
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "commentedProduct", cascade = [(CascadeType.ALL)], fetch = FetchType.LAZY)
+    @JsonManagedReference
     val comments: List<CommentEntity> = emptyList(),
 
     @OneToMany(mappedBy = "product")
-    val rating: List<RatingEntity> = emptyList(),
-
-    @OneToMany(mappedBy = "product")
+    @JsonManagedReference
     val favoriteBy: List<FavoriteEntity> = emptyList(),
-    )
+)

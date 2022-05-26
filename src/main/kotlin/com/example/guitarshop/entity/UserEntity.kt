@@ -1,5 +1,6 @@
 package com.example.guitarshop.entity
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Table(name = "users")
@@ -14,14 +15,14 @@ data class UserEntity(
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     val bags: List<ShoppingBagEntity> = emptyList(),
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "commentedByUser")
+    @JsonManagedReference
     val comments: List<CommentEntity> = emptyList(),
 
     @OneToMany(mappedBy = "user")
-    val rating: List<RatingEntity> = emptyList(),
-
-    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     val favorites: List<FavoriteEntity> = emptyList(),
-    )
+)
