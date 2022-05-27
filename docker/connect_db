@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker exec -it db psql -h localhost guitar_shop_api -U root
+

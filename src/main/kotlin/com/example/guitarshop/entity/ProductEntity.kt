@@ -42,15 +42,8 @@ data class ProductEntity(
     val lads: String?,
     val link: String?,
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JsonManagedReference
-    val bags: List<ShoppingBagEntity> = emptyList(),
-
     @OneToMany(mappedBy = "commentedProduct", cascade = [(CascadeType.ALL)], fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonManagedReference(value = "prod_comments")
     val comments: List<CommentEntity> = emptyList(),
 
-    @OneToMany(mappedBy = "product")
-    @JsonManagedReference
-    val favoriteBy: List<FavoriteEntity> = emptyList(),
 )

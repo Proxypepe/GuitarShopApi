@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/auth")
 class AuthController(private val service: UserService) {
-    @PostMapping()
+    @PostMapping
     fun checkAuth(@RequestBody body: UserBody): UserEntity? {
         val user = service.getUserByEmail(body.email)
         if (user.password == body.password)

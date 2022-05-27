@@ -20,11 +20,11 @@ data class CommentEntity(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
-    @JsonBackReference
-    val commentedProduct: ProductEntity,
+    @JsonBackReference(value = "prod_comments")
+    val prod_id: ProductEntity,
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonBackReference(value = "user_comments")
     val commentedByUser: UserEntity,
 )

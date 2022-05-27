@@ -13,16 +13,8 @@ data class UserEntity(
     val password: String?,
     val role: String,
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    @JsonManagedReference
-    val bags: List<ShoppingBagEntity> = emptyList(),
-
-    @OneToMany(mappedBy = "commentedByUser")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "commentedByUser", cascade = [(CascadeType.ALL)])
+    @JsonManagedReference(value = "user_comments")
     val comments: List<CommentEntity> = emptyList(),
 
-    @OneToMany(mappedBy = "user")
-    @JsonManagedReference
-    val favorites: List<FavoriteEntity> = emptyList(),
 )

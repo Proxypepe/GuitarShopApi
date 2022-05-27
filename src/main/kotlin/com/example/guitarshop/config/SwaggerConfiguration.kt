@@ -2,8 +2,6 @@ package com.example.guitarshop.config
 
 
 import org.springdoc.core.GroupedOpenApi
-import org.springdoc.core.SwaggerUiConfigParameters
-import org.springdoc.core.SwaggerUiOAuthProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
